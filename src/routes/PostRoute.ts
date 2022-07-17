@@ -1,8 +1,10 @@
 import { Router } from "express";
+import PostController from "../controllers/PostController";
 const router = Router();
-router.get("/");
-router.get("/:id");
-router.put("/:id");
-router.post("/");
-router.delete("/:id");
+router.get("/", PostController.GetAllPosts);
+
+router.get("/:id", PostController.GetPost);
+router.put("/:id", PostController.UpdatePost);
+router.post("/", PostController.CreatePost);
+router.delete("/:id", PostController.DeletePost);
 export default router;

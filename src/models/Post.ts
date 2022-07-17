@@ -20,6 +20,9 @@ const PostSchema = new Schema<Post>({
     type: String,
     required: true,
   },
+  author_id: {
+    type: String,
+  },
 });
 const PostModel = model<Post>("Post", PostSchema);
 export default PostModel;
