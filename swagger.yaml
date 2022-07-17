@@ -6,4 +6,84 @@ definition:
     description: "Demo swagger with NodeJS"
   servers:
     - url: http://localhost:4000
+  tags:
+    - name: Post
+      description: "Post API Documentation"
+    - name: User
+      description: "User API Documentation"
+
+  components:
+    schemas:
+      Post:
+        type: object
+        required:
+          - title
+          - content
+          - author_id
+        properties:
+          title:
+            type: string
+            description: Title of post
+            example: This is title string
+          subContent:
+            type: string
+            description: Sub content of post
+            example: This is sub-content string
+          content:
+            type: string
+            description: Full content of post
+            example: This is full content string
+          author_id:
+            type: string
+            example: 1
+      User:
+        type: object
+        properties:
+          username:
+            type: string
+            example: huutin123
+          password:
+            type: string
+            example: mypassword
+          name:
+            type: string
+            example: Huu Tin
+  paths:
+    /posts:
+      get:
+        tags:
+          - "Post"
+        summary: Returns list of posts.
+        description: ""
+        responses:
+          "200":
+            description: A JSON array of posts
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    type: object
+      post:
+        tags:
+          - "Post"
+        summary: Create new post
+        consumes:
+          - "application/json"
+        requestBody:
+          description: "Create New Post"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Post"
+            application/x-www-form-urlencoded:
+              schema:
+                $ref: "#/components/schemas/Post"
+        responses:
+          "201":
+            description: "Created new post successfully"
+
 apis: ["src/routes/*.ts"]

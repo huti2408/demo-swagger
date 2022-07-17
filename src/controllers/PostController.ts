@@ -27,6 +27,7 @@ export default class PostController {
       ///Author ID get from JWT Login
       const { title, subContent, content } = req.body;
       const authorId = "";
+      console.log(req.body);
       await PostModel.create({
         authorId,
         title,

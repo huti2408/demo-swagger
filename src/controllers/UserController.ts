@@ -34,7 +34,7 @@ export default class UserController {
           .status(400)
           .json({ message: "Username is already existed!" });
       } else {
-        await UserModel.create({ username, name, passwordHash });
+        await UserModel.create({ username, name, password: passwordHash });
         res.status(201).json({ message: "Register Succsessfully!" });
       }
     } catch (err: any) {
