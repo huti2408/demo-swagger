@@ -1,9 +1,10 @@
 import { Router } from "express";
 import PostController from "../controllers/PostController";
+import Authentication from "../middlewares/Authentication";
 const router = Router();
 router.get("/", PostController.GetAllPosts);
 router.get("/:id", PostController.GetPost);
-router.put("/:id", PostController.UpdatePost);
-router.post("/", PostController.CreatePost);
-router.delete("/:id", PostController.DeletePost);
+router.put("/:id", Authentication, PostController.UpdatePost);
+router.post("/", Authentication, PostController.CreatePost);
+router.delete("/:id", Authentication, PostController.DeletePost);
 export default router;
