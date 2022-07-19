@@ -2,9 +2,7 @@ import PostRouter from "./PostRoute";
 import UserRouter from "./UserRoute";
 import specs from "../utils/swagger-connect";
 import swaggerUI from "swagger-ui-express";
-import YAML from "yamljs";
 
-const SwaggerYaml = YAML.load("swagger.yaml");
 const router = (app) => {
   /**
    * @openapi
